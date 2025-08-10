@@ -56,7 +56,7 @@ A console application to save data as SPIFFS on an ESP32 board.
    ```
 4. Flash to ESP32:
    ```bash
-   esptool --chip esp32c6 --port /dev/ttyUSB0 write_flash 0x16000 spiffs.bin
+   esptool --chip esp32c6 --port COM8 write_flash 0x16000 spiffs.bin
    ```
 
 
