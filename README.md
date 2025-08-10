@@ -24,7 +24,7 @@ A console application to save data as SPIFFS on an ESP32 board.
   ```bash
   python spiffsgen.py 0x30000 data spiffs.bin
   ```
-  - `0x30000` is the partition size (adjust as needed).
+  - `0x30000` is the available partition size (adjust as needed).
   - `data` is the folder containing your files.
   - `spiffs.bin` is the output binary file.
 
@@ -33,9 +33,9 @@ A console application to save data as SPIFFS on an ESP32 board.
 - Connect your ESP32 board via USB.
 - Use `esptool` to write the SPIFFS binary to the device:
   ```bash
-  esptool --chip esp32c6 --port /dev/ttyUSB0 write_flash 0x16000 spiffs.bin
+  esptool --chip esp32c6 --port COM8 write_flash 0x16000 spiffs.bin
   ```
-  - Replace `/dev/ttyUSB0` with your actual serial port.
+  - Replace `COM8` with your actual serial port.
   - `0x16000` is the offset according to your partition table for SPIFFS storage.
 
 ## Notes
