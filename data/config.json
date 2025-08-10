@@ -1,0 +1,157 @@
+{
+    "Device": {
+        "Type": "Router",
+        "PowerSupply": "DC",
+        "Description": "Smart Home Device with various sensors and controls",
+        "HardwareVersion": "1.0",
+        "FirmwareVersion": "0.0.0",
+        "SerialNumber": "9772898A_Y3_250624",
+        "Manufacturer": "Miro Sieber",
+        "Model": "OmniSenseHome"
+    },
+
+    "FactoryResetButton": {
+        "Pin": 9
+    },
+
+    "WiFi": {
+        "Enabled": false,
+        "SSID": "MyNetwork",
+        "Password": "MyPassword"
+    },
+
+    "RGBLed": {
+        "Enabled": true,
+        "Red": 21,
+        "Green": 22,
+        "Blue": 23
+    },
+
+    "I2c": {
+        "SDA": 6,
+        "SCL": 7
+    },
+
+  "Sensors": [
+    {
+      "Type": "OPT3004",
+      "Enabled": true,
+      "I2cAddress": "0x44",
+      "Interrupt": 8,
+      "Name": "LuxSensor"
+    },
+    {
+      "Type": "MTS4Z",
+      "Enabled": true,
+      "I2cAddress": "0x4A",
+      "Name": "TemperatureSensor"
+    },
+    {
+      "Type": "AHT21",
+      "Enabled": true,
+      "I2cAddress": "0x38",
+      "Name": "HumidityAndTemperatureSensor"
+    },
+    {
+      "Type": "ENS160",
+      "Enabled": true,
+      "Interrupt": 1,
+      "I2cAddress": "0x53",
+      "Name": "AirQualitySensor"
+    },
+    {
+      "Type": "INMP441",
+      "Enabled": false,
+      "WS": 18,
+      "SCK": 19,
+      "SD": 20,
+      "Name": "DBSensor"
+    },
+    {
+      "Type": "HLK-LD2412",
+      "Enabled": true,
+      "RX": 4,
+      "TX": 5,
+      "Out": 0,
+      "Baudrate": 115200,
+      "Name": "MotionSensor"
+    },
+    {
+      "Type": "Bluetooth",
+      "Enabled": false,
+      "Name": "BluetoothPresence"
+    }
+  ],
+
+  
+  "Speaker": {
+    "Enabled": false,
+    "Type": "MAX98357A",
+    "LRC": 14,
+    "BCLK": 2,
+    "DIN": 3
+  },
+  
+  "Buzzer": {
+	  "Enabled": true,
+	  "Pin": 15
+  },
+
+  "Microphone": {
+    "Enabled": false,
+    "WS": 18,
+    "SCK": 19,
+    "SD": 20
+  },
+
+    "Display": {
+      "Enabled": false,
+      "Type": "OLED"
+    },
+
+  "Switches": [
+    {
+      "Enabled": true,
+      "Pin": 3,
+      "Name": "Switch1"
+    },
+    {
+      "Enabled": true,
+      "Pin": 2,
+      "Name": "Switch2"
+    },
+    {
+      "Enabled": true,
+      "Pin": 14,
+      "Name": "Switch3"
+    },
+    {
+      "Enabled": false,
+      "Pin": 15,
+      "Name": "Switch4"
+    }
+  ],
+
+  "Relays": [
+    {
+      "Enabled": false,
+      "Pin": 3,
+      "Name": "Relay1"
+    },
+    {
+      "Enabled": false,
+      "Pin": 2,
+      "Name": "Relay2"
+    },
+    {
+      "Enabled": false,
+      "Pin": 14,
+      "Name": "Relay3"
+    },
+    {
+      "Enabled": false,
+      "Pin": 15,
+      "Name": "Relay4"
+    }
+  ]
+}
