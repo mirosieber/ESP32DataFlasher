@@ -1,11 +1,11 @@
 # ESP32 DataFlasher
 
-A Python GUI application to easily create and flash a SPIFFS filesystem to an ESP32 board — no more memorizing long commands.
+A Python GUI application to easily create and flash a SPIFFS filesystem to an ESP32 board.
 
 ## Features
 
 - Graphical interface for generating and flashing SPIFFS binaries.
-- Select COM port from a dropdown (with refresh button).
+- Select COM port from a dropdown.
 - Choose data folder via a file picker.
 - Editable partition size (hex or decimal).
 - Editable flash offset (hex or decimal).
@@ -19,7 +19,6 @@ A Python GUI application to easily create and flash a SPIFFS filesystem to an ES
   pip install pyserial
 - Install esptool:
   pip install esptool
-- Download spiffsgen.py from the Espressif SPIFFS documentation and place it in the same directory as ESP32 DataFlasher.py or provide its path in the GUI.
 
 ## Usage
 
