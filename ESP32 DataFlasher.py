@@ -7,11 +7,12 @@ Requires: pyserial
 
 This Tkinter GUI lets you:
  - pick a COM port (refreshable)
+ - select an ESP32 chip type (esp32, esp32s2, esp32s3, esp32c3, esp32c6, esp32h2, esp8266)
  - choose a data folder to pack
  - set partition size and flash offset (hex or decimal)
  - optionally set paths to spiffsgen.py and esptool executable
  - generate the spiffs binary (runs `python spiffsgen.py <partsize> <data_folder> <outfile>`)
- - flash the resulting bin to an ESP32-C6 via esptool
+ - flash the resulting bin to an ESP32 via esptool
 
 Notes:
  - The GUI spawns threads for long-running commands so the UI stays responsive.
@@ -59,6 +60,13 @@ class App(tk.Tk):
         self.port_cb = ttk.Combobox(port_row, textvariable=self.port_var, width=18, state='readonly')
         self.port_cb.pack(side=tk.LEFT, padx=6)
         ttk.Button(port_row, text="Refresh", command=self.refresh_ports).pack(side=tk.LEFT)
+        
+        # ESP32 chip selection
+        ttk.Label(port_row, text="Chip:").pack(side=tk.LEFT, padx=(10,0))
+        self.chip_var = tk.StringVar(value="esp32c6")
+        chip_options = ["esp32", "esp32s2", "esp32s3", "esp32c3", "esp32c6", "esp32h2", "esp8266"]
+        self.chip_cb = ttk.Combobox(port_row, textvariable=self.chip_var, width=12, state='readonly', values=chip_options)
+        self.chip_cb.pack(side=tk.LEFT, padx=6)
 
         # Partition size and offset
         po_row = ttk.Frame(left)
@@ -233,18 +241,19 @@ class App(tk.Tk):
             messagebox.showerror('Invalid offset', 'Enter flash offset as hex (0x16000) or decimal.')
             return
 
+        chip = self.chip_var.get().strip() or 'esp32c6'
         esptool = self.esptool_var.get().strip() or 'esptool'
         # prefer direct esptool executable, but many people use python -m esptool
         cmd = None
         if shutil.which(esptool):
             # found in PATH
-            cmd = [esptool, '--chip', 'esp32c6', '--port', port, 'write_flash', offset, out]
+            cmd = [esptool, '--chip', chip, '--port', port, 'write_flash', offset, out]
         else:
             # try invoking as python -m esptool
             python_exe = sys.executable or 'python'
-            cmd = [python_exe, '-m', esptool, '--chip', 'esp32c6', '--port', port, 'write_flash', offset, out]
+            cmd = [python_exe, '-m', esptool, '--chip', chip, '--port', port, 'write_flash', offset, out]
 
-        self.append_log(f'Starting flash to {port} at {offset} using {esptool}')
+        self.append_log(f'Starting flash to {port} at {offset} using {esptool} for chip {chip}')
         self._run_command_threaded(cmd)
 
 

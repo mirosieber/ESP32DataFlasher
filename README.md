@@ -6,6 +6,7 @@ A Python GUI application to easily create and flash a SPIFFS filesystem to an ES
 
 - Graphical interface for generating and flashing SPIFFS binaries.
 - Select COM port from a dropdown.
+- Choose ESP32 chip type from a dropdown (esp32, esp32s2, esp32s3, esp32c3, esp32c6, esp32h2, esp8266).
 - Choose data folder via a file picker.
 - Editable partition size (hex or decimal).
 - Editable flash offset (hex or decimal).
@@ -31,6 +32,7 @@ A Python GUI application to easily create and flash a SPIFFS filesystem to an ES
 
 3. Configure settings in the GUI
    - COM Port → Select your ESP32 serial port.
+   - Chip → Select your ESP32 chip type (e.g., esp32, esp32c6, etc.).
    - Partition size → e.g., 0x6A000 (must match your partition table).
    - Flash offset → e.g., 0x16000 (must match your partition table).
    - Data folder → Click Browse to pick your folder.
@@ -44,7 +46,7 @@ A Python GUI application to easily create and flash a SPIFFS filesystem to an ES
 
 5. Flash to ESP32
    - Click Flash to ESP32 — this runs:
-     esptool --chip esp32c6 --port <COM_PORT> write_flash <offset> <output_file>
+     esptool --chip <selected_chip> --port <COM_PORT> write_flash <offset> <output_file>
      Example:
      esptool --chip esp32c6 --port COM8 write_flash 0x16000 spiffs.bin
 
