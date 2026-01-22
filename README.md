@@ -1,6 +1,6 @@
 # ESP32 DataFlasher
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENCE)
 
 A Python GUI application to easily create and flash a SPIFFS filesystem to an ESP32 board.
 
